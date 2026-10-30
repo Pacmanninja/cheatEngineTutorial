@@ -1,0 +1,592 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="52">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>2</ID>
+      <Description>"Step 2"</Description>
+      <Options moHideChildren="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : Tutorial-x86_64.exe
+  Version: 
+  Date   : 2026-10-26
+  Author : Pacmanninja998
+  Description : 
+
+  &lt;Optional info&gt;
+}
+
+[ENABLE]
+
+aobscanmodule(TUT1,Tutorial-x86_64.exe,29 93 ** ** ** ** 8B 8B ** ** ** ** 41 B9 FF 00 00 00 4C 8D 85 F8 FE FF FF) // should be unique
+assert(TUT1,29 93 00 08 00 00)
+alloc(newmem,$1000,TUT1)
+alloc(playerBase,8)
+
+label(code)
+label(return)
+
+newmem:
+  mov [playerBase],rbx
+
+code:
+  sub [rbx+00000800],edx
+  jmp return
+
+TUT1:
+  jmp newmem
+  nop
+return:
+registersymbol(TUT1)
+registersymbol(playerBase)
+
+[DISABLE]
+
+TUT1:
+  db 29 93 00 08 00 00
+
+unregistersymbol(TUT1)
+unregistersymbol(playerBase)
+dealloc(playerBase)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Tutorial-x86_64.exe"+47F6D
+
+"Tutorial-x86_64.exe"+47F40: 55                       - push rbp
+"Tutorial-x86_64.exe"+47F41: 48 89 E5                 - mov rbp,rsp
+"Tutorial-x86_64.exe"+47F44: 48 8D A4 24 D0 FE FF FF  - lea rsp,[rsp-00000130]
+"Tutorial-x86_64.exe"+47F4C: 48 89 9D F0 FE FF FF     - mov [rbp-00000110],rbx
+"Tutorial-x86_64.exe"+47F53: 48 89 CB                 - mov rbx,rcx
+"Tutorial-x86_64.exe"+47F56: 48 C7 45 F8 00 00 00 00  - mov qword ptr [rbp-08],00000000
+"Tutorial-x86_64.exe"+47F5E: 90                       - nop 
+"Tutorial-x86_64.exe"+47F5F: B9 05 00 00 00           - mov ecx,00000005
+"Tutorial-x86_64.exe"+47F64: E8 A7 8B FC FF           - call "Tutorial-x86_64.exe"+10B10
+"Tutorial-x86_64.exe"+47F69: 67 8D 50 01              - lea edx,[rax+01]
+// ---------- INJECTING HERE ----------
+"Tutorial-x86_64.exe"+47F6D: 29 93 00 08 00 00        - sub [rbx+00000800],edx
+// ---------- DONE INJECTING  ----------
+"Tutorial-x86_64.exe"+47F73: 8B 8B 00 08 00 00        - mov ecx,[rbx+00000800]
+"Tutorial-x86_64.exe"+47F79: 41 B9 FF 00 00 00        - mov r9d,000000FF
+"Tutorial-x86_64.exe"+47F7F: 4C 8D 85 F8 FE FF FF     - lea r8,[rbp-00000108]
+"Tutorial-x86_64.exe"+47F86: 48 C7 C2 FF FF FF FF     - mov rdx,FFFFFFFFFFFFFFFF
+"Tutorial-x86_64.exe"+47F8D: 48 63 C9                 - movsxd  rcx,ecx
+"Tutorial-x86_64.exe"+47F90: E8 BB E2 FB FF           - call "Tutorial-x86_64.exe"+6250
+"Tutorial-x86_64.exe"+47F95: 45 31 C0                 - xor r8d,r8d
+"Tutorial-x86_64.exe"+47F98: 48 8D 95 F8 FE FF FF     - lea rdx,[rbp-00000108]
+"Tutorial-x86_64.exe"+47F9F: 48 8D 4D F8              - lea rcx,[rbp-08]
+"Tutorial-x86_64.exe"+47FA3: E8 D8 1A FC FF           - call "Tutorial-x86_64.exe"+9A80
+}
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry ValueOnActivate="1000">
+          <ID>3</ID>
+          <Description>"Health"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>playerBase</Address>
+          <Offsets>
+            <Offset>800</Offset>
+          </Offsets>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>4</ID>
+      <Description>"Step 3"</Description>
+      <Options moHideChildren="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : Tutorial-x86_64.exe
+  Version: 
+  Date   : 2026-10-26
+  Author : Pacmanninja998
+  Description : 
+
+  &lt;Optional info&gt;
+}
+
+[ENABLE]
+
+aobscanmodule(TUT2,Tutorial-x86_64.exe,29 9E ** ** ** ** 8B 86 ** ** ** ** 67 8D 90 30 F8 FF FF 48 8B 8E F0 07 00 00) // should be unique
+assert(TUT2,29 9E 00 08 00 00)
+alloc(newmem,$1000,TUT2)
+alloc(playerBase2,8)
+label(code)
+label(return)
+
+newmem:
+  mov [playerBase2],rsi
+
+code:
+  sub [rsi+00000800],ebx
+  jmp return
+
+TUT2:
+  jmp newmem
+  nop
+return:
+registersymbol(TUT2)
+registersymbol(playerBase2)
+
+[DISABLE]
+
+TUT2:
+  db 29 9E 00 08 00 00
+
+unregistersymbol(TUT2)
+unregistersymbol(playerBase2)
+dealloc(playerBase2)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Tutorial-x86_64.exe"+486FD
+
+"Tutorial-x86_64.exe"+486CC: 48 89 9D E0 FE FF FF     - mov [rbp-00000120],rbx
+"Tutorial-x86_64.exe"+486D3: 48 89 B5 E8 FE FF FF     - mov [rbp-00000118],rsi
+"Tutorial-x86_64.exe"+486DA: 48 89 CE                 - mov rsi,rcx
+"Tutorial-x86_64.exe"+486DD: 48 C7 45 F0 00 00 00 00  - mov qword ptr [rbp-10],00000000
+"Tutorial-x86_64.exe"+486E5: 48 C7 45 F8 00 00 00 00  - mov qword ptr [rbp-08],00000000
+"Tutorial-x86_64.exe"+486ED: 90                       - nop 
+"Tutorial-x86_64.exe"+486EE: B9 0A 00 00 00           - mov ecx,0000000A
+"Tutorial-x86_64.exe"+486F3: E8 18 84 FC FF           - call "Tutorial-x86_64.exe"+10B10
+"Tutorial-x86_64.exe"+486F8: 83 C0 01                 - add eax,01
+"Tutorial-x86_64.exe"+486FB: 89 C3                    - mov ebx,eax
+// ---------- INJECTING HERE ----------
+"Tutorial-x86_64.exe"+486FD: 29 9E 00 08 00 00        - sub [rsi+00000800],ebx
+// ---------- DONE INJECTING  ----------
+"Tutorial-x86_64.exe"+48703: 8B 86 00 08 00 00        - mov eax,[rsi+00000800]
+"Tutorial-x86_64.exe"+48709: 67 8D 90 30 F8 FF FF     - lea edx,[rax-000007D0]
+"Tutorial-x86_64.exe"+48710: 48 8B 8E F0 07 00 00     - mov rcx,[rsi+000007F0]
+"Tutorial-x86_64.exe"+48717: E8 74 CA 13 00           - call "Tutorial-x86_64.exe"+185190
+"Tutorial-x86_64.exe"+4871C: 83 BE 00 08 00 00 00     - cmp dword ptr [rsi+00000800],00
+"Tutorial-x86_64.exe"+48723: 7D 64                    - jnl "Tutorial-x86_64.exe"+48789
+"Tutorial-x86_64.exe"+48725: 48 8B 0D 4C C9 18 00     - mov rcx,["Tutorial-x86_64.exe"+1D5078]
+"Tutorial-x86_64.exe"+4872C: E8 2F 49 12 00           - call "Tutorial-x86_64.exe"+16D060
+"Tutorial-x86_64.exe"+48731: B9 F4 01 00 00           - mov ecx,000001F4
+"Tutorial-x86_64.exe"+48736: E8 D5 83 FC FF           - call "Tutorial-x86_64.exe"+10B10
+}
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry ValueOnActivate="5000">
+          <ID>5</ID>
+          <Description>"Health"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>playerBase2</Address>
+          <Offsets>
+            <Offset>800</Offset>
+          </Offsets>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>8</ID>
+      <Description>"Step 4"</Description>
+      <Options moHideChildren="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : Tutorial-x86_64.exe
+  Version:
+  Date   : 2026-10-26
+  Author : Pacmanninja998
+  Description :
+
+  &lt;Optional info&gt;
+}
+
+[ENABLE]
+
+aobscanmodule(TUT3H,Tutorial-x86_64.exe,F3 0F 11 8E ** ** ** ** C7 44 24 20 04 00 00 00 F3 0F 10 8E ** ** ** **) // should be unique
+aobscanmodule(TUT3A,Tutorial-x86_64.exe,F2 0F 11 83 ** ** ** ** C7 44 24 20 04 00 00 00 F2 0F 10 8B ** ** ** **)
+assert(TUT3A,F2 0F 11 83 28 08 00 00)
+assert(TUT3H,F3 0F 11 8E 20 08 00 00)
+alloc(newmemA,$1000,TUT3A)
+alloc(newmemH,$1000,TUT3H)
+alloc(playerBase3A, 8)
+alloc(playerBase3H, 8)
+label(returnA)
+label(returnH)
+
+// Ammo
+newmemA:
+  mov [playerBase3A], rbx
+  movsd [rbx+00000828],xmm0
+  jmp returnA
+
+// Health
+newmemH:
+  mov [playerBase3H], rsi
+  movss [rsi+00000820],xmm1
+  jmp returnH
+
+TUT3A:
+  jmp newmemA
+  nop 3
+returnA:
+registersymbol(TUT3A)
+registersymbol(playerBase3A)
+TUT3H:
+  jmp newmemH
+  nop 3
+returnH:
+registersymbol(TUT3H)
+registersymbol(playerBase3H)
+
+[DISABLE]
+
+TUT3H:
+  db F3 0F 11 8E 20 08 00 00
+TUT3A:
+  db F2 0F 11 83 28 08 00 00
+
+unregistersymbol(TUT3A)
+unregistersymbol(TUT3H)
+unregistersymbol(playerBase3A)
+unregistersymbol(playerBase3H)
+dealloc(playerBase3A)
+dealloc(playerBase3H)
+dealloc(newmemA)
+dealloc(newmemH)
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry ValueOnActivate="5000">
+          <ID>7</ID>
+          <Description>"Ammo"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Double</VariableType>
+          <Address>playerBase3A</Address>
+          <Offsets>
+            <Offset>828</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry ValueOnActivate="5000">
+          <ID>6</ID>
+          <Description>"Health"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>playerBase3H</Address>
+          <Offsets>
+            <Offset>820</Offset>
+          </Offsets>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>9</ID>
+      <Description>"Step 5"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : Tutorial-x86_64.exe
+  Version: 
+  Date   : 2026-10-27
+  Author : Pacmanninja998
+  Description : 
+
+  &lt;Optional info&gt;
+}
+
+[ENABLE]
+
+aobscanmodule(TUT4,Tutorial-x86_64.exe,89 10 48 8B 45 F0 48 8B 80 E8 07 00 00) // should be unique
+assert(TUT4,89 10 48 8B 45 F0)
+alloc(newmem,$1000,TUT4)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov rax,[rbp-10]
+  jmp return
+
+TUT4:
+  jmp newmem
+  nop
+return:
+registersymbol(TUT4)
+
+[DISABLE]
+
+TUT4:
+  db 89 10 48 8B 45 F0
+
+unregistersymbol(TUT4)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Tutorial-x86_64.exe"+495D8
+
+"Tutorial-x86_64.exe"+495B5: 49 89 E8              - mov r8,rbp
+"Tutorial-x86_64.exe"+495B8: E8 D3 DD FC FF        - call "Tutorial-x86_64.exe"+17390
+"Tutorial-x86_64.exe"+495BD: 0F 1F 00              - nop dword ptr [rax]
+"Tutorial-x86_64.exe"+495C0: 8B 45 E8              - mov eax,[rbp-18]
+"Tutorial-x86_64.exe"+495C3: 3B 45 EC              - cmp eax,[rbp-14]
+"Tutorial-x86_64.exe"+495C6: 74 B0                 - je "Tutorial-x86_64.exe"+49578
+"Tutorial-x86_64.exe"+495C8: EB 00                 - jmp "Tutorial-x86_64.exe"+495CA
+"Tutorial-x86_64.exe"+495CA: 48 8B 45 F0           - mov rax,[rbp-10]
+"Tutorial-x86_64.exe"+495CE: 48 8B 80 E8 07 00 00  - mov rax,[rax+000007E8]
+"Tutorial-x86_64.exe"+495D5: 8B 55 E8              - mov edx,[rbp-18]
+// ---------- INJECTING HERE ----------
+"Tutorial-x86_64.exe"+495D8: 89 10                 - mov [rax],edx
+// ---------- DONE INJECTING  ----------
+"Tutorial-x86_64.exe"+495DA: 48 8B 45 F0           - mov rax,[rbp-10]
+"Tutorial-x86_64.exe"+495DE: 48 8B 80 E8 07 00 00  - mov rax,[rax+000007E8]
+"Tutorial-x86_64.exe"+495E5: 8B 00                 - mov eax,[rax]
+"Tutorial-x86_64.exe"+495E7: 3B 45 EC              - cmp eax,[rbp-14]
+"Tutorial-x86_64.exe"+495EA: 74 02                 - je "Tutorial-x86_64.exe"+495EE
+"Tutorial-x86_64.exe"+495EC: EB 22                 - jmp "Tutorial-x86_64.exe"+49610
+"Tutorial-x86_64.exe"+495EE: 48 8B 45 F0           - mov rax,[rbp-10]
+"Tutorial-x86_64.exe"+495F2: 48 8B 88 C8 07 00 00  - mov rcx,[rax+000007C8]
+"Tutorial-x86_64.exe"+495F9: B2 01                 - mov dl,01
+"Tutorial-x86_64.exe"+495FB: 48 8B 45 F0           - mov rax,[rbp-10]
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>16</ID>
+      <Description>"Step 6"</Description>
+      <Options moHideChildren="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry ValueOnActivate="5000">
+          <ID>15</ID>
+          <Description>"No description"</Description>
+          <Options moAlwaysHideChildren="1"/>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Tutorial-x86_64.exe+346C70</Address>
+          <Offsets>
+            <Offset>0</Offset>
+          </Offsets>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>10</ID>
+              <Description>"Auto Assemble script"</Description>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : Tutorial-x86_64.exe
+  Version: 
+  Date   : 2026-10-27
+  Author : Pacmanninja998
+  Description : 
+
+  &lt;Optional info&gt;
+}
+
+[ENABLE]
+
+aobscanmodule(TUT5,Tutorial-x86_64.exe,89 02 48 8B 05 ** ** ** ** 8B 00 3B 45 EC 74 ** EB **) // should be unique
+assert(TUT5,89 02 48 8B 05 DB D0 2F 00)
+alloc(newmem,$1000,TUT5)
+alloc(capturedBase,8)
+label(code)
+label(return)
+
+newmem:
+   mov [capturedBase],rdx
+
+code:
+  mov [rdx],eax
+  mov rax,["Tutorial-x86_64.exe"+346C70]
+  jmp return
+
+TUT5:
+  jmp newmem
+  nop 4
+return:
+registersymbol(TUT5)
+registersymbol(capturedBase)
+
+[DISABLE]
+
+TUT5:
+  db 89 02 48 8B 05 DB D0 2F 00
+
+unregistersymbol(TUT5)
+unregistersymbol(capturedBase)
+dealloc(capturedBase)
+dealloc(newmem)
+
+</AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>11</ID>
+                  <Description>"Pointer"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>capturedBase</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>17</ID>
+      <Description>"Step 7"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : Tutorial-x86_64.exe
+  Version: 
+  Date   : 2026-10-27
+  Author : Pacmanninja998
+  Description : 
+
+  &lt;Optional info&gt;
+}
+
+[ENABLE]
+
+aobscanmodule(TUT6,Tutorial-x86_64.exe,83 AE E8 07 00 00 01 8B 8E E8 07 00 00) // should be unique
+alloc(newmem,$1000,TUT6)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  add dword ptr [rsi+000007E8],02
+  //sub dword ptr [rsi+000007E8],01
+  jmp return
+
+TUT6:
+  jmp newmem
+  nop 2
+return:
+registersymbol(TUT6)
+
+[DISABLE]
+
+TUT6:
+  db 83 AE E8 07 00 00 01
+
+unregistersymbol(TUT6)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "Tutorial-x86_64.exe"+4A557
+
+"Tutorial-x86_64.exe"+4A520: 55                                - push rbp
+"Tutorial-x86_64.exe"+4A521: 48 89 E5                          - mov rbp,rsp
+"Tutorial-x86_64.exe"+4A524: 48 8D A4 24 C0 FD FF FF           - lea rsp,[rsp-00000240]
+"Tutorial-x86_64.exe"+4A52C: 48 89 9D E0 FD FF FF              - mov [rbp-00000220],rbx
+"Tutorial-x86_64.exe"+4A533: 48 89 B5 E8 FD FF FF              - mov [rbp-00000218],rsi
+"Tutorial-x86_64.exe"+4A53A: 48 89 CE                          - mov rsi,rcx
+"Tutorial-x86_64.exe"+4A53D: 48 C7 85 F0 FE FF FF 00 00 00 00  - mov qword ptr [rbp-00000110],00000000
+"Tutorial-x86_64.exe"+4A548: 48 C7 45 F8 00 00 00 00           - mov qword ptr [rbp-08],00000000
+"Tutorial-x86_64.exe"+4A550: 90                                - nop 
+"Tutorial-x86_64.exe"+4A551: 8B 9E E8 07 00 00                 - mov ebx,[rsi+000007E8]
+// ---------- INJECTING HERE ----------
+"Tutorial-x86_64.exe"+4A557: 83 AE E8 07 00 00 01              - sub dword ptr [rsi+000007E8],01
+// ---------- DONE INJECTING  ----------
+"Tutorial-x86_64.exe"+4A55E: 8B 8E E8 07 00 00                 - mov ecx,[rsi+000007E8]
+"Tutorial-x86_64.exe"+4A564: 41 B9 FF 00 00 00                 - mov r9d,000000FF
+"Tutorial-x86_64.exe"+4A56A: 4C 8D 85 F8 FE FF FF              - lea r8,[rbp-00000108]
+"Tutorial-x86_64.exe"+4A571: 48 C7 C2 FF FF FF FF              - mov rdx,FFFFFFFFFFFFFFFF
+"Tutorial-x86_64.exe"+4A578: 48 63 C9                          - movsxd  rcx,ecx
+"Tutorial-x86_64.exe"+4A57B: E8 D0 BC FB FF                    - call "Tutorial-x86_64.exe"+6250
+"Tutorial-x86_64.exe"+4A580: 45 31 C0                          - xor r8d,r8d
+"Tutorial-x86_64.exe"+4A583: 48 8D 95 F8 FE FF FF              - lea rdx,[rbp-00000108]
+"Tutorial-x86_64.exe"+4A58A: 48 8D 4D F8                       - lea rcx,[rbp-08]
+"Tutorial-x86_64.exe"+4A58E: E8 ED F4 FB FF                    - call "Tutorial-x86_64.exe"+9A80
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>22</ID>
+      <Description>"Step 8"</Description>
+      <Options moHideChildren="1"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry ValueOnActivate="5000">
+          <ID>21</ID>
+          <Description>"Value"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>4 Bytes</VariableType>
+          <Address>Tutorial-x86_64.exe+346CA0</Address>
+          <Offsets>
+            <Offset>18</Offset>
+            <Offset>0</Offset>
+            <Offset>18</Offset>
+            <Offset>10</Offset>
+          </Offsets>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>27</ID>
+      <Description>"Step 9"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : Tutorial-x86_64.exe
+  Version: 
+  Date   : 2026-10-30
+  Author : Pacmanninja998
+  Description : 
+
+  &lt;Optional info&gt;
+  cmp dword ptr [rbx+14],1 checks the 4-byte team ID.
+
+  je skipDamage jumps if the current actor is blue/team 1.
+
+  Blue actors bypass movss [rbx+08],xmm0, so their calculated damage is not written.
+
+  Red actors do not jump, so they execute the original health write normally.
+
+}
+
+[ENABLE]
+
+aobscanmodule(TUT8,Tutorial-x86_64.exe,F3 0F 11 43 08 0F 2F 05 ** ** ** ** 7A ** 75 ** 48 8B 4B 60) // should be unique
+alloc(newmem,$1000,TUT8)
+
+label(code)
+label(return)
+label(skipDamage)
+
+newmem:
+   cmp dword ptr [rbx+14],1
+   je skipDamage
+
+code:
+  movss [rbx+08],xmm0
+  jmp return
+
+skipDamage:
+  jmp return
+
+TUT8:
+  jmp newmem
+return:
+registersymbol(TUT8)
+
+[DISABLE]
+
+TUT8:
+  db F3 0F 11 43 08
+
+unregistersymbol(TUT8)
+dealloc(newmem)
+</AssemblerScript>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+  <Structures StructVersion="2">
+    <Structure Name="Step9_Players" AutoFill="0" AutoCreate="1" DefaultHex="0" AutoDestroy="0" DoNotSaveLocal="0" RLECompression="1" AutoCreateStructsize="4096">
+      <Elements>
+        <Element Offset="0" Vartype="Pointer" Bytesize="8" OffsetHex="00000000" DisplayMethod="unsigned integer"/>
+        <Element Offset="8" Vartype="Float" Bytesize="4" OffsetHex="00000008" DisplayMethod="unsigned integer"/>
+        <Element Offset="12" Vartype="4 Bytes" Bytesize="4" OffsetHex="0000000C" DisplayMethod="unsigned integer"/>
+        <Element Offset="16" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000010" DisplayMethod="hexadecimal"/>
+        <Element Offset="20" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000014" DisplayMethod="unsigned integer"/>
+        <Element Offset="24" Vartype="Byte" Bytesize="1" OffsetHex="00000018" DisplayMethod="unsigned integer"/>
+        <Element Offset="25" Vartype="String" Bytesize="5" OffsetHex="00000019" DisplayMethod="unsigned integer"/>
+        <Element Offset="30" Vartype="Byte" Bytesize="1" RLECount="2" OffsetHex="0000001E" DisplayMethod="unsigned integer"/>
+        <Element Offset="32" Vartype="4 Bytes" Bytesize="4" RLECount="14" OffsetHex="00000020" DisplayMethod="unsigned integer"/>
+        <Element Offset="88" Vartype="Pointer" Bytesize="8" OffsetHex="00000058" DisplayMethod="unsigned integer"/>
+        <Element Offset="96" Vartype="Pointer" Bytesize="8" OffsetHex="00000060" Description="Pointer to instance of TLabel" DisplayMethod="unsigned integer"/>
+        <Element Offset="104" Vartype="4 Bytes" Bytesize="4" RLECount="24" OffsetHex="00000068" DisplayMethod="unsigned integer"/>
+      </Elements>
+    </Structure>
+  </Structures>
+</CheatTable>
